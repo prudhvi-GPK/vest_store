@@ -80,3 +80,12 @@
      ```bash
      python manage.py startapp vest_store_app
      ```
+
+### CREATE ABOUT PAGE AND ADD CONTENT
+
+1. In vest_store  `urls.py` create a new url path to redirect everything to homepage
+2. add vest_store in INSTALLED_APPS of `settings.py`.
+3. Create a tempalte for `about.html`
+4. write view for redirecting the url related to `about_page`.
+5. create a url path for about in `urls.py` of `vest_store_app`
+6. add the content in `about.html` in as per the css and html format.
