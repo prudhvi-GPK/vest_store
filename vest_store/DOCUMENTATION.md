@@ -89,3 +89,10 @@
 4. write view for redirecting the url related to `about_page`.
 5. create a url path for about in `urls.py` of `vest_store_app`
 6. add the content in `about.html` in as per the css and html format.
+
+### CREATE CART PAGE
+
+1. Create a tempalte for `cart.html`
+2. write view for redirecting the url related to `cart_page`.
+3. create a url path for about in `urls.py` of `vest_store_app`
+4. add the css,html,bootstrap content in `cart.html`.
