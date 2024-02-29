@@ -69,6 +69,15 @@
             footer p {
                 margin: 0;
             }
+
+            /* Adding CSS for Cart Symbol */
+            .cart-symbol {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                font-size: 24px;
+                color: #ffffff;
+            }
     
      </style> 
 </head>
@@ -115,5 +124,18 @@
         <div class="social-icons"></div>
         <p>&copy; 2024 Vest Store App. All rights reserved.</p>
     </footer>
+
+    <!-- Adding div for cart symbol -->
+    <div id ="cartSymbol" class="cart-symbol"></div>
+<script>
+
+    window.onload = function() {
+        addToCart();
+    }
+    function addToCart(){
+        const cartSymbol = document.getElementById('cartSymbol');
+        cartSymbol.innerText = '🛒';
+    }
+</script>
 </body>
 </html>
