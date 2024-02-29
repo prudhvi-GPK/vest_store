@@ -76,7 +76,7 @@
                 top: 20px;
                 right: 20px;
                 font-size: 24px;
-                color: #333;
+                color: #ffffff;
             }
     
      </style> 
@@ -127,10 +127,14 @@
     <!-- Adding div for cart symbol -->
     <div id ="cartSymbol" class="cart-symbol"></div>
 <script>
+
+    window.onload = function() {
+        addToCart();
+    }
     function addToCart(){
         const cartSymbol = document.getElementById('cartSymbol');
-        cartSymbol.innerText = '🛒'
-    }gils
+        cartSymbol.innerText = '🛒';
+    }
 </script>
 </body>
 </html>
