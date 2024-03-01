@@ -72,11 +72,12 @@
 
             /* Adding CSS for Cart Symbol */
             .cart-symbol {
-                position: fixed;
-                top: 20px;
-                right: 20px;
+                position: absolute;
+                top: 30px;
+                right: 25px;
                 font-size: 24px;
                 color: #ffffff;
+                cursor: pointer;
             }
     
      </style> 
@@ -131,7 +132,10 @@
 
     window.onload = function() {
         addToCart();
-    }
+        document.getElementById('cartSymbol').addEventListener('click',function(){
+            window.location.href = "{% url 'cart_page' %}";
+        });
+    };
     function addToCart(){
         const cartSymbol = document.getElementById('cartSymbol');
         cartSymbol.innerText = '🛒';
