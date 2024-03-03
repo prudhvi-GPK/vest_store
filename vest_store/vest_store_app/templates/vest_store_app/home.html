@@ -1,129 +1,82 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>25 MPH Vest</title>
-    <style>
-        body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-    
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 30px;
-            }
-    
-            nav ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                text-align: left;
-            }
-    
-            nav ul li {
-                display: inline;
-                margin: 0 10px;
-            }
-    
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
-    
-            .center {
-                text-align: center;
-            }
-    
-            .hero{
-                text-align:center;
-                padding: 20px;
-            }
-    
-            .features {
-                
-                padding: 10px;
-                text-align: center;
-            }
-    
-            .feature {
-                margin-bottom: 20px;
-            }
-            
-            .cta{
-                text-align: center;
-                padding: 10px;
-            }
-    
-            footer {
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 20px;
-            }
-    
-            footer p {
-                margin: 0;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25 MPH Vest-Store</title>  
+    <link rel="stylesheet" href="{% static 'css/vest.css' %}">
 
-            /* Adding CSS for Cart Symbol */
-            .cart-symbol {
-                position: absolute;
-                top: 30px;
-                right: 25px;
-                font-size: 24px;
-                color: #ffffff;
-                cursor: pointer;
-            }
-    
-     </style> 
-</head>
-<body>
-    <header>       
-        <nav>
-            <ul>
-                <li><img src="/static/images/logo.png" alt="Logo" height="30" ><li>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about_page' %}">About Us</a></li>
-                <li><a href="{% url 'cart_page' %}">Cart</a></li>
-            </ul>
-        </nav>
-        
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about_page' %}">About Us</a></li>
+          <li><a href="{% url 'cart_page' %}">Cart</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="center">
-        <img src="{% static 'images/vest.png' %}" style="width: 300px; height: 400px;"  >
+      <img src="{% static 'images/vest.png' %}" style="width: 300px; height:400px;" >
     </div>
-    
+
     <section class="hero">
-        <div class="hero-content">
-            <h1>Stay Safe with 25 MPH Vest</h1>
-            <p>Protect yourself while cycling with our high-visibility safety vest.</p>
-            
-        </div>
+      <div class="hero-content">
+        <h1>Stay Safe with 25 MPH Vest</h1>
+        <p>
+          Protect yourself while cycling with our high-visibility safety vest.
+        </p>
+      </div>
     </section>
-    
+
     <section class="features">
-        <h2>Key Features</h2>
-        <div class="feature">
-            <h3>High Visibility</h3>
-            <p>Stay visible to motorists day or night.</p>
-        </div>
-        <div class="feature">
-            <h3>Lightweight</h3>
-            <p>Comfortable and easy to wear.</p>
-        </div>
+      <h2>Key Features</h2>
+      <div class="feature">
+        <h3>High Visibility</h3>
+        <p>Stay visible to motorists day or night.</p>
+      </div>
+      <div class="feature">
+        <h3>Lightweight</h3>
+        <p>Comfortable and easy to wear.</p>
+      </div>
     </section>
-    <div class="cta">
-        <a href="#" class="button">Buy Now</a>
-    </div>
-    <footer>  
-        <div class="social-icons"></div>
-        <p>&copy; 2024 Vest Store App. All rights reserved.</p>
+
+    <div class="cards-container">
+      <div class="card">
+        <img src="{% static 'images/39.png' %}" />
+        <div class="card-content">
+          <h2>$19.99 for 1</h2>
+          <div class="cta">
+            <a href="{% url 'cart_page' %}" class="button">Add to Cart</a>
+            <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    
+
+
+        <div class="card">
+            <img
+            src="{% static 'images/19.png' %}" 
+            />
+            <div class="card-content">
+            <h2>$38.99 for 2</h2>
+            <div class="cta">
+                <a href="{% url 'cart_page' %}" class="button">Add to cart</a>
+                <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
+            </div>
+            </div>
+        </div>
+    </div>    
+        <br>
+        <br/>
+
+    <footer>
+      <div class="social-icons"></div>
+      <p>&copy; 2024 Vest Store App. All rights reserved.</p>
     </footer>
 
     <!-- Adding div for cart symbol -->
@@ -142,4 +95,5 @@
     }
 </script>
 </body>
+
 </html>
