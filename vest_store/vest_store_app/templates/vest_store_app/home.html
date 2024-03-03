@@ -78,5 +78,22 @@
       <div class="social-icons"></div>
       <p>&copy; 2024 Vest Store App. All rights reserved.</p>
     </footer>
-  </body>
+
+    <!-- Adding div for cart symbol -->
+    <div id ="cartSymbol" class="cart-symbol"></div>
+<script>
+
+    window.onload = function() {
+        addToCart();
+        document.getElementById('cartSymbol').addEventListener('click',function(){
+            window.location.href = "{% url 'cart_page' %}";
+        });
+    };
+    function addToCart(){
+        const cartSymbol = document.getElementById('cartSymbol');
+        cartSymbol.innerText = '🛒';
+    }
+</script>
+</body>
+
 </html>
