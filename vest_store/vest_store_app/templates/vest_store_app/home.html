@@ -76,7 +76,7 @@
                 position: absolute;
                 top: 20px;
                 right: 25px;
-                font-size: 24px;
+                font-size: 25px;
                 color: #ffffff;
                 cursor: pointer;
             }
@@ -125,7 +125,7 @@
         <div class="card-content">
           <h2>$19.99 for 1</h2>
           <div class="cta">
-            <a href="{% url 'cart_page' %}" class="button">Add to Cart</a>
+            <a href="javascript:addToCart(1);" class="button">Add to Cart</a>
             <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
           </div>
         </div>
@@ -140,7 +140,7 @@
             <div class="card-content">
             <h2>$38.99 for 2</h2>
             <div class="cta">
-                <a href="{% url 'cart_page' %}" class="button">Add to cart</a>
+                <a href="javascript:addToCart(2);" class="button">Add to Cart</a>
                 <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
             </div>
             </div>
@@ -157,16 +157,28 @@
     <!-- Adding div for cart symbol -->
     <div id ="cartSymbol" class="cart-symbol"></div>
 <script>
+    let cartItems = 0;
 
     window.onload = function() {
-        addToCart();
+        updateCartSymbol();
         document.getElementById('cartSymbol').addEventListener('click',function(){
             window.location.href = "{% url 'cart_page' %}";
         });
     };
-    function addToCart(){
+
+    function addToCart(quantity) {
+        cartItems += quantity;
+        updateCartSymbol();
+        window.confirm('Item(s) added to Cart');
+    }
+
+    function updateCartSymbol() {
         const cartSymbol = document.getElementById('cartSymbol');
-        cartSymbol.innerText = '🛒';
+        if (cartItems > 0) {
+            cartSymbol.innerText = '🛒' + cartItems;
+        } else{
+            cartSymbol.innerText = '🛒 0';
+        }
     }
 </script>
 </body>
