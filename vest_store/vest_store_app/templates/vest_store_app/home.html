@@ -166,15 +166,19 @@
     setRandomBackground();
 </script>
 
+<div class="center">
+    <img src="{% static 'images/vest.png' %}" style="width: 300px; height: 400px;"  >
+</div>
+
 <section class="hero">
     <div class="hero-content">
         <h1>Stay Safe with 25 MPH Vest</h1>
-        <p style="color: #fff;">Protect yourself while cycling with our high-visibility safety vest.</p>
+        <p>Protect yourself while cycling with our high-visibility safety vest.</p>
     </div>
 </section>
 
 <section class="features">
-    <h2 style="color: #007bff;">Key Features</h2>
+    <h2>Key Features</h2>
     <div class="feature">
         <h3>High Visibility</h3>
         <p>Stay visible to motorists day or night.</p>
@@ -183,89 +187,37 @@
         <h3>Lightweight</h3>
         <p>Comfortable and easy to wear.</p>
     </div>
-    <div class="feature">
-        <h3>Water Resistant</h3>
-        <p>Protection in all weather conditions.</p>
-    </div>
-    <div class="feature">
-        <h3>Durable Fabric</h3>
-        <p>Long-lasting and reliable.</p>
-    </div>
 </section>
 
-<div class="cards-container">
-  <div class="card">
-      <img src="{% static 'images/39.png' %}" />
-      <div class="card-content">
-          <h2>$19.99 for 1</h2>
-          <div class="cta">
-              <a href="javascript:addToCart('images/39.png', 'Product 1', 1, 19.99);" class="button">Add to Cart</a>
-              <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
-          </div>
-      </div>
-  </div>
-
-  <div class="card">
-      <img src="{% static 'images/19.png' %}" />
-      <div class="card-content">
-          <h2>$38.99 for 2</h2>
-          <div class="cta">
-              <a href="javascript:addToCart('images/19.png', 'Product 2', 2, 38.99);" class="button">Add to Cart</a>
-              <a href="{% url 'cart_page' %}" class="button">Buy Now</a>
-          </div>
-      </div>
-  </div>
+<div class="cta">
+    <label for="sizeDropdown">Select Size:</label>
+    <select id="sizeDropdown">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+    </select>
+    <button onclick="addToCart()">Add to Cart</button>
 </div>
 
-<footer>
-    <div class="social-icons"></div>
-    <p style="color: #fff;">&copy; 2024 Vest Store App. All rights reserved.</p>
-</footer>
 
-<!-- Adding div for cart symbol -->
-<!-- Adding div for cart symbol -->
-<div id ="cartSymbol" class="cart-symbol"></div>
+
 <script>
-    let cartItems = 0;
+    function addToCart() {
+        const sizeDropdown = document.getElementById('sizeDropdown');
+        const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
 
-    window.onload = function() {
-        updateCartSymbol();
-        document.getElementById('cartSymbol').addEventListener('click',function(){
-            window.location.href = "{% url 'cart_page' %}";
-        });
-    };
+        const quantity = 1;  // You can change this if needed
 
-    function addToCart(imageUrl, productName, quantity, price) {
-        const product = {
-            imageUrl: imageUrl,
-            productName: productName,
-            quantity: quantity,
-            price: price
-        };
-
-        // Retrieve existing cart items from localStorage
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-        // Add the selected product to the cart
-        cartItems.push(product);
-
-        // Save updated cart items to localStorage
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-        window.confirm('Item(s) added to Cart');
-        updateCartSymbol();
-    }
-
-    function updateCartSymbol() {
-        const cartSymbol = document.getElementById('cartSymbol');
-        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        cartItems = storedCartItems.length;
-        if (cartItems > 0) {
-            cartSymbol.innerText = '🛒 ' + cartItems;
-        } else {
-            cartSymbol.innerText = '🛒 0';
-        }
+        const url = `/add_to_cart/${quantity}/${selectedSize}/`;
+        window.location.href = url;
     }
 </script>
+
+
+
+
+
+
+
 </body>
 </html>
