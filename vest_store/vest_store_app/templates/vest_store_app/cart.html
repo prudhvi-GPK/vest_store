@@ -249,21 +249,23 @@
     </header>
     <div class="container">
         <h2>Your Cart</h2>
-        {% if cart %}
-            {% for item, quantity in cart.items %}
-                <div class="cart-item">
-                    <div class="shirt-details">
-                        <img src="{% static 'images/vest.png' %}" width="50" height="100">
-                        <div>
-                            <p>Size: {{ item|cut:'vest_' }}</p>
-                            <p>Quantity: {{ quantity }}</p>
+        <div class="background-image background-image1"></div>
+            {% if cart %}
+                {% for item, quantity in cart.items %}
+                    <div class="cart-item">
+                        <div class="shirt-details">
+                            <img src="{% static 'images/vest.png' %}" width="50" height="100">
+                            <div>
+                                <p>Size: {{ item|cut:'vest_' }}</p>
+                                <p>Quantity: {{ quantity }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>Your cart is empty</p>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>Your cart is empty</p>
+            {% endif %}
+        </div>
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
