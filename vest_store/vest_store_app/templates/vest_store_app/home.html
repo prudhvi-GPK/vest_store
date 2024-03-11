@@ -160,11 +160,12 @@
 
       .cart-symbol {
         position: absolute;
-        top: 20px;
+        top: 15px;
         right: 25px;
         font-size: 25px;
         color: #ffffff;
         cursor: pointer;
+        z-index: 1000;
       }
 
       .background-image {
@@ -329,19 +330,38 @@
 
     <div class="background-image background-image2"></div>
 
- 
+
+    <div id ="cartSymbol" class="cart-symbol">🛒0</div>
 
     <script>
+        let cartItems = 0;
+        window.onload = function() {
+            document.getElementById('cartSymbol').addEventListener('click',function(){
+                window.location.href = "{% url 'cart_page' %}";
+            });
+        };
       function addToCart() {
         const sizeDropdown = document.getElementById("sizeDropdown");
         const selectedSize =
           sizeDropdown.options[sizeDropdown.selectedIndex].value;
 
         const quantity = 1; // You can change this if needed
-
         const url = `/add_to_cart/${quantity}/${selectedSize}/`;
-        window.location.href = url;
+        // window.location.href = url;
+          if(window.confirm('Item(s) added to Cart')) {
+              cartItems++;
+              updateCartSymbol();
+          }
       }
+
+      function updateCartSymbol() {
+        const cartSymbol = document.getElementById('cartSymbol');
+        if (cartItems > 0) {
+            cartSymbol.innerText = '🛒' + cartItems;
+        } else {
+            cartSymbol.innerText = '🛒  0';
+        }
+    }
     </script>
   </body>
 </html>
