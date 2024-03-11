@@ -82,7 +82,7 @@
         text-align: center;
         position: relative;
         z-index: 2;
-        margin-top: 100px; /* Adjust the margin-top according to your header height */
+        margin-top: 95px; /* Adjust the margin-top according to your header height */
       }
 
       .hero-content {
@@ -253,9 +253,9 @@
       </nav>
     </header>
 
-    <div class="center">
-      <h2 style="color: #fff">Vest Store</h2>
-    </div>
+    <div class="center" style="margin-top: -10px; color: white;">
+        <h2>Vest Store</h2>
+      </div>
 
     <div class="background-image background-image1"></div>
 
@@ -267,7 +267,7 @@
         </p>
 
         <div class="features">
-          <h2>Key Features</h2>
+          <h2 style="color: #fff">Key Features</h2>
           <div class="cards-container">
             <div class="card">
               <div class="card-content">
@@ -279,20 +279,20 @@
               </div>
             </div>
 
-            <div class="card">
-              <div class="card-content">
-                <div class="cta">
-                  <label for="sizeDropdown">Select Size:</label>
-                  <select id="sizeDropdown">
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                  </select>
-                  <button onclick="toggleSizeChart()">Size Chart</button>
-                  <button onclick="addToCart()">Add to Cart</button>
+            <div class="card" style="margin-bottom: 0px; margin-top: 20px;">
+                <div class="card-content">
+                  <div class="cta" style="display: flex; flex-direction: column; align-items: center;">
+                    <label for="sizeDropdown">Select Size:</label>
+                    <select id="sizeDropdown">
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                    </select>
+                    <button onclick="toggleSizeChart()" style="margin-top: 10px;">Size Chart</button>
+                    <button onclick="addToCart()" style="margin-top: 10px;">Add to Cart</button>
+                  </div>
                 </div>
               </div>
-            </div>
             <div id="size-chart" class="size-chart" style="display: none;">
                 <span class="close" onclick="closeSizeChart()">&times;</span>
                 <img src="{% static 'images/vest3.jpg' %}" alt="Size Chart" />
@@ -329,9 +329,11 @@
     </div>
 
     <div class="background-image background-image2"></div>
+     <footer>
+    <p>&copy; 2024 Vest Store. All rights reserved.</p>
+</footer>
 
-
-    <div id ="cartSymbol" class="cart-symbol">🛒0</div>
+    <div id ="cartSymbol" class="cart-symbol">🛒 0</div>
 
     <script>
         let cartItems = 0;
