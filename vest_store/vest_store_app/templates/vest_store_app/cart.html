@@ -112,7 +112,7 @@
             {% for item, quantity in cart.items %}
                 <div class="cart-item">
                     <div class="shirt-details">
-                        <img src="{% static 'images/vest.png' %}" alt="Vest Image">
+                        <img src="{% static 'images/vest.png' %}" width="50" height="100">
                         <div>
                             <p>Size: {{ item|cut:'vest_' }}</p>
                             <p>Quantity: {{ quantity }}</p>
