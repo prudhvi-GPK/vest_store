@@ -343,28 +343,24 @@
                 window.location.href = "{% url 'cart_page' %}";
             });
         };
-      function addToCart() {
-        const sizeDropdown = document.getElementById("sizeDropdown");
-        const selectedSize =
-          sizeDropdown.options[sizeDropdown.selectedIndex].value;
-
-        const quantity = 1; // You can change this if needed
-        const url = `/add_to_cart/${quantity}/${selectedSize}/`;
-        // window.location.href = url;
-          if(window.confirm('Item(s) added to Cart')) {
-              cartItems++;
-              updateCartSymbol();
-          }
-      }
-
-      function updateCartSymbol() {
-        const cartSymbol = document.getElementById('cartSymbol');
-        if (cartItems > 0) {
-            cartSymbol.innerText = '🛒' + cartItems;
-        } else {
-            cartSymbol.innerText = '🛒  0';
+        function addToCart() {
+            const sizeDropdown = document.getElementById('sizeDropdown');
+            const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
+    
+            const quantity = 1;  
+    
+            const url = `/add_to_cart/${quantity}/${selectedSize}/`;
+            window.location.href = url;
         }
-    }
+
+        function updateCartSymbol() {
+          const cartSymbol = document.getElementById('cartSymbol');
+          if (cartItems > 0) {
+              cartSymbol.innerText = '🛒' + cartItems;
+          } else {
+              cartSymbol.innerText = '🛒  0';
+        }
+       }
     </script>
     <footer>
         <div class="social-icons"></div>
