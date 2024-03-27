@@ -15,12 +15,11 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        overflow: auto;
-    
+        overflow: hidden;
       }
 
       header {
-        background-color: #121313c3; /* Dark Orchid */
+        background-color: #808080; /* Dark Orchid */
         color: white;
         padding: 1em;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -247,6 +246,7 @@
     <header>
       <nav>
         <ul>
+          <li><img src="/static/images/logo.png" alt="Logo" height="30" /></li>
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'about_page' %}">About Us</a></li>
           <li><a href="{% url 'cart_page' %}">Cart</a></li>
@@ -254,9 +254,9 @@
       </nav>
     </header>
 
-    <div class="center" style="margin-top: -10px; color: white;">
-        <h2>Vest Store</h2>
-      </div>
+   <div class="center" style="margin-top: -50px; color: white;">
+  <h2>Vest Store</h2>
+</div>
 
 
     <div class="hero">
@@ -329,7 +329,7 @@
     </div>
 
 
-    <div id ="cartSymbol" class="cart-symbol">🛒 0</div>
+    <div id ="cartSymbol" class="cart-symbol">🛒0</div>
 
     <script>
         let cartItems = 0;
@@ -339,29 +339,34 @@
             });
             updateCartSymbol();
         };
-        function addToCart() {
-            const sizeDropdown = document.getElementById('sizeDropdown');
-            const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
-    
-            const quantity = 1;  
-    
-            const url = `/add_to_cart/${quantity}/${selectedSize}/`;
-            window.location.href = url;
-        }
+      function addToCart() {
+        const sizeDropdown = document.getElementById("sizeDropdown");
+        const selectedSize =
+          sizeDropdown.options[sizeDropdown.selectedIndex].value;
 
-        function updateCartSymbol() {
-          const cartSymbol = document.getElementById('cartSymbol');
-          if (cartItems > 0) {
-              cartSymbol.innerText = '🛒' + cartItems;
-          } else {
-              cartSymbol.innerText = '🛒  0';
+        const quantity = 1; // You can change this if needed
+        const url = `/add_to_cart/${quantity}/${selectedSize}/`;
+        // window.location.href = url;
+          if(window.confirm('Item(s) added to Cart')) {
+              cartItems++;
+              updateCartSymbol();
+          }
+      }
+
+      function updateCartSymbol() {
+        const cartSymbol = document.getElementById('cartSymbol');
+        if (cartItems > 0) {
+            cartSymbol.innerText = '🛒' + cartItems;
+        } else {
+            cartSymbol.innerText = '🛒  0';
         }
-       }
+    }
     </script>
     
     <footer>
         <div class="social-icons"></div>
         <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
     </footer>
+
   </body>
 </html>
