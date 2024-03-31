@@ -119,23 +119,10 @@ svg text{
   letter-spacing:5px;
   stroke: #4C4E52;
   font-size:40px;
-  font-weight: 500;
-  stroke-width: 3;
-  animation:Vest-Store  2s infinite alternate;
+  font-weight: 300;
 }
 
-@keyframes Vest-Store {
-  0% {
-      stroke-dasharray: 0 50%;
-      stroke-dashoffset: 20%;
-      fill: #4C4E52;
-  }
-  100%{
-      stroke-dasharray: 50% 0;
-      stroke-dashoffset: 20%;
-      fill: hsla(108, 82%, 56%, 0);
-  }
-}
+
 
 
 .features {
@@ -153,7 +140,7 @@ svg text{
 .cards-container {
   display: flex;
   justify-content: center;
-  gap:10px;
+  gap:20px;
   padding: 50px;
   
 }
@@ -183,13 +170,13 @@ svg text{
 .button {
   width: 150px; 
   margin-top: 10px; 
-  background-color: black;
-  color: black; 
+  background-color: white;
+  color: white;
   border: 1px solid black; 
 }
 
 .button:hover {
-  background-color: black;
+  background-color: #4C4E52;
   color: white; 
 }
 
