@@ -13,6 +13,7 @@ def cart_page(request):
 
 
 
+
 def add_to_cart(request, quantity, size):
     cart = request.session.get('cart', {})
 
