@@ -30,7 +30,7 @@
         <h4 style="margin-top: -50px; " >
           Protect yourself while cycling with our high-visibility safety vest.
         </h4>
-    
+
         <div class="features">
           <div class="cards-container">
             <div class="card">
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            
+
 
             <div class="cta" style="display: flex; flex-direction: column; align-items: center; background-color: #abb0b8;">
               <label for="sizeDropdown">Select Size:</label>
@@ -62,7 +62,7 @@
               <button onclick="addToCart()" style="margin-top: 10px; width: 150px;">Add to Cart</button>
               <button onclick="togglePopup()" class="button"style="margin-top: 10px">Size Chart</button>
           </div>
-          
+
           <div class="popup" id="popup-1">
             <div class="overlay"></div>
             <div class="content">
@@ -113,12 +113,12 @@
                 <div class="slide"><img src="{% static 'images/img2.jpeg' %}" alt="Image 2"></div>
                 <div class="slide"><img src="{% static 'images/img3.jpeg' %}" alt="Image 3"></div>
               </div>
-              
+
               <button class="prev" onclick="prevSlide(2)">&#10094;</button>
               <button class="next" onclick="nextSlide(2)">&#10095;</button>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -178,9 +178,10 @@
           const quantityInput = document.getElementById("quantityInput");
           const quantity = parseInt(quantityInput.value);
 
-          const url = `/add_to_cart/${quantity}/${selectedSize}/`;
-          window.location.href = url; // Redirect to the cart page URL
-}
+          cartItems += quantity;
+          updateCartSymbol();
+          alert("Item(s) added to cart");
+        }
 
 
       function updateCartSymbol() {
@@ -192,11 +193,10 @@
         }
     }
     </script>
-    
+
     <footer>
         <div class="social-icons"></div>
         <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
     </footer>
-
   </body>
 </html>
