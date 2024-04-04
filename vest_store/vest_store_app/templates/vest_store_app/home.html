@@ -15,7 +15,7 @@
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'about_page' %}">About Us</a></li>
           <li><a href="{% url 'cart_page' %}">Cart</a></li>
-          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+
         </ul>
       </nav>
     </header>
@@ -194,9 +194,12 @@
     }
     </script>
 
-    <footer>
-        <div class="social-icons"></div>
-        <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
-    </footer>
+<footer>
+  <div class="social-icons">
+      <!-- Social icons -->
+  </div>
+  <a href="{% url 'admin:index' %}" class="admin-link">Admin</a>
+  <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
+</footer>
   </body>
 </html>
