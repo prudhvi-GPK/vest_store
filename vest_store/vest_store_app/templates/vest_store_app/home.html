@@ -173,14 +173,14 @@
             updateCartSymbol();
         };
         function addToCart() {
-          const sizeDropdown = document.getElementById("sizeDropdown");
-          const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
-          const quantityInput = document.getElementById("quantityInput");
-          const quantity = parseInt(quantityInput.value);
+            const sizeDropdown = document.getElementById("sizeDropdown");
+            const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
+            const quantityInput = document.getElementById("quantityInput");
+            const quantity = parseInt(quantityInput.value);
+            cartItems += quantity;
 
-          cartItems += quantity;
-          updateCartSymbol();
-          alert("Item(s) added to cart");
+            // Update cart symbol
+            updateCartSymbol();
         }
 
 
