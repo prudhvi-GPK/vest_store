@@ -31,3 +31,11 @@ def add_to_cart(request, quantity, size):
     print("Cart contents after adding:", request.session.get('cart', 'Cart is empty'))
 
     return redirect('cart_page')
+
+def checkout(request):
+    # Your checkout logic goes here
+    return render(request, 'vest_store_app/checkout.html')
+
+def order_confirmation(request):
+    # Your order confirmation logic goes here
+    return render(request, 'vest_store_app/order_confirmation.html')
