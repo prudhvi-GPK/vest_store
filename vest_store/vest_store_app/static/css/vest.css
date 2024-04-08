@@ -32,7 +32,7 @@ main {
 header {
   background-color: #4C4E52;
   color: white;
-  padding: 1.2em;
+  padding: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -56,7 +56,6 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
 }
-
 
 .section-intro {
   margin-right:50px;
@@ -118,14 +117,6 @@ p.my-4 {
   font-weight: 600;
   color: #fff;
 }
-
-/*.btn:hover {
-  color: #868689;
-  #a88163
-  #BCFD4C
-  
-}*/
-
 
 /*product view css*/
 img{
@@ -199,6 +190,59 @@ img{
   border: none;
   cursor: pointer;
   z-index: 3;
+  
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+
+.cart-symbol {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 25px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.product-slider {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+img {
+  width: 240px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
   
 }
 
@@ -410,7 +454,6 @@ img{
   padding-top: 100px; 
 }
 
-
 .cart-item {
   background-color: #fff;
   border-radius: 8px;
@@ -442,9 +485,7 @@ img{
   font-size: 25px;
   color: #ffffff;
   cursor: pointer;
-  z-index: 1000;
 }
-
 
 footer {
   background-color: #4C4E52;
@@ -455,7 +496,6 @@ footer {
   bottom: 0;
   width:100%;
   border-radius: 10px;
-  z-index: 99;
 }
 
 
