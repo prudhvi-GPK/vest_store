@@ -13,3 +13,10 @@ class Vest(models.Model):
 
     def __str__(self):
         return f"{self.get_size_display()} - Price: ${self.price} - Stock: {self.stock}"
+class UserDetails(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.name
