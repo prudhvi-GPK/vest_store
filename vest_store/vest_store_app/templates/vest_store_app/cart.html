@@ -256,6 +256,13 @@
                     <div class="col-md-2"><strong>Subtotal:</strong></div>
                     <div class="col-md-4">$<span id="final-price">0</span></div>
                 </div>
+                <script src="https://www.paypal.com/sdk/js?client-id=BAAIL1OZT-uimbfSFztcDzDge10Fa9bJlLQSBJyZQtCLbF_UMMQoYab2iX4PUo2zXhgVDbyf0nVED4iE_M&components=hosted-buttons&disable-funding=venmo,paylater,credit,card&currency=USD"></script>
+                <div id="paypal-container-CZL4TC7FR2V44"></div>
+                <script>
+                    paypal.HostedButtons({
+                    hostedButtonId: "CZL4TC7FR2V44",
+                    }).render("#paypal-container-CZL4TC7FR2V44")
+                </script>
                 <div id="user-details-form" style="display: none;">
                     <h2>Enter Your Details</h2>
                     <form id="user-details-form">

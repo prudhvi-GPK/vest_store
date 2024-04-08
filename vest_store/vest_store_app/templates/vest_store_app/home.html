@@ -15,7 +15,7 @@
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'about_page' %}">About Us</a></li>
           <li><a href="{% url 'cart_page' %}">Cart</a></li>
-          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+
         </ul>
       </nav>
     </header>
@@ -60,7 +60,7 @@
               <label for="quantityInput">Quantity:</label>
               <input type="number" id="quantityInput" value="1" min="1">
               <button onclick="addToCart()" style="margin-top: 10px; width: 150px;">Add to Cart</button>
-              <button onclick="togglePopup()" class="button"style="margin-top: 10px">Size Chart</button>
+              <button onclick="togglePopup()" class="button" style="margin-top: 10px">Size Chart</button>
           </div>
 
           <div class="popup" id="popup-1">
@@ -173,14 +173,16 @@
             updateCartSymbol();
         };
         function addToCart() {
-            const sizeDropdown = document.getElementById("sizeDropdown");
-            const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
-            const quantityInput = document.getElementById("quantityInput");
-            const quantity = parseInt(quantityInput.value);
-            cartItems += quantity;
+          const sizeDropdown = document.getElementById("sizeDropdown");
+          const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
+          const quantityInput = document.getElementById("quantityInput");
+          const quantity = parseInt(quantityInput.value);
 
-            // Update cart symbol
-            updateCartSymbol();
+          cartItems += quantity;
+          updateCartSymbol();
+          alert("Vest(s) added to cart");
+          const url = `/add_to_cart/${quantity}/${selectedSize}/`;
+          window.location.href = url; // Redirect to the cart page URL
         }
 
 
@@ -194,9 +196,12 @@
     }
     </script>
 
-    <footer>
-        <div class="social-icons"></div>
-        <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
-    </footer>
+<footer>
+  <div class="social-icons">
+      <!-- Social icons -->
+  </div>
+  <a href="{% url 'admin:index' %}" class="admin-link">Admin</a>
+  <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
+</footer>
   </body>
 </html>
