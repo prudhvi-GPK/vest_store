@@ -256,44 +256,9 @@
                     <div class="col-md-2"><strong>Subtotal:</strong></div>
                     <div class="col-md-4">$<span id="final-price">0</span></div>
                 </div>
-
                 <div class="buttons text-center">
                     <a href="{% url 'checkout' %}"> <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
                 </div>
-
-                <script src="https://www.paypal.com/sdk/js?client-id=BAAIL1OZT-uimbfSFztcDzDge10Fa9bJlLQSBJyZQtCLbF_UMMQoYab2iX4PUo2zXhgVDbyf0nVED4iE_M&components=hosted-buttons&disable-funding=venmo,paylater,credit,card&currency=USD"></script>
-                <div id="paypal-container-CZL4TC7FR2V44"></div>
-                <script>
-                    paypal.HostedButtons({
-                    hostedButtonId: "CZL4TC7FR2V44",
-                    }).render("#paypal-container-CZL4TC7FR2V44")
-                </script>
-                <div id="user-details-form" style="display: none;">
-                    <h2>Enter Your Details</h2>
-                    <form id="user-details-form">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-                <script src="https://www.paypal.com/sdk/js?client-id=BAAIL1OZT-uimbfSFztcDzDge10Fa9bJlLQSBJyZQtCLbF_UMMQoYab2iX4PUo2zXhgVDbyf0nVED4iE_M&components=hosted-buttons&disable-funding=venmo,paylater,credit,card&currency=USD"></script>
-                <div id="paypal-container-CZL4TC7FR2V44"></div>
-                <script>
-                    paypal.HostedButtons({
-                    hostedButtonId: "CZL4TC7FR2V44",
-                    }).render("#paypal-container-CZL4TC7FR2V44")
-                </script>
-
             </div>
         </div>
     </div>
@@ -310,7 +275,7 @@
             });
 
             // Remove item when delete button is clicked
-            $(document).on('click', '.delete-btn', function() {
+            $('.delete-btn').click(function() {
                 $(this).closest('.cart-item').remove();
                 calculateTotalPrice();
                 calculateOrderSummary();
@@ -343,43 +308,7 @@
                 $('#items-list').html(itemsListHTML);
                 $('#final-price').text('$' + totalPrice);
             }
-            
-            // Show user details form when "Proceed with PayPal" button is clicked
-            $('.checkout-btn').click(function() {
-                $('#user-details-form').show();
-            });
-
-            // Handle form submission
-            $('#user-details-form').submit(function(event) {
-                event.preventDefault();
-                var name = $('#name').val();
-                var phone = $('#phone').val();
-                var email = $('#email').val();
-                
-                // Make an AJAX request to store user details in the database
-                $.ajax({
-                    url: '/store_user_details/', // URL mapped to the view
-                    method: 'POST',
-                    data: {
-                        name: name,
-                        phone: phone,
-                        email: email
-                    },
-                    success: function(response) {
-                        // Show success message or handle redirection
-                        console.log('User details stored successfully:', response);
-                        // Proceed with PayPal checkout after storing user details
-                        // You can redirect the user to PayPal or perform any other action here
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error
-                        console.error('Error storing user details:', error);
-                    }
-                });
-    });
-});
-
-
+        });
     </script>
 </body>
 </html>
