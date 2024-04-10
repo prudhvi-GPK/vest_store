@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
+from django.http import JsonResponse
+from .models import UserDetails
 
-# Create your views here.from django.shortcuts import render
+
 def home(request):
     return render(request, 'vest_store_app/home.html')
 
@@ -17,7 +19,6 @@ def cart_page(request):
 def add_to_cart(request, quantity, size):
     cart = request.session.get('cart', {})
 
-    # Assuming each vest has a unique ID, you might need to adjust this based on your model
     vest_id = f'vest_{size}'
 
     if vest_id in cart:
@@ -39,3 +40,17 @@ def checkout(request):
 def order_confirmation(request):
     # Your order confirmation logic goes here
     return render(request, 'vest_store_app/order_confirmation.html')
+def store_user_details(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        
+        # Create a new instance of UserDetails model and save to the database
+        user_details = UserDetails.objects.create(name=name, phone=phone, email=email)
+        user_details.save()
+        
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
