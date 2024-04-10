@@ -256,6 +256,11 @@
                     <div class="col-md-2"><strong>Subtotal:</strong></div>
                     <div class="col-md-4">$<span id="final-price">0</span></div>
                 </div>
+
+                <div class="buttons text-center">
+                    <a href="{% url 'checkout' %}"> <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+                </div>
+
                 <script src="https://www.paypal.com/sdk/js?client-id=BAAIL1OZT-uimbfSFztcDzDge10Fa9bJlLQSBJyZQtCLbF_UMMQoYab2iX4PUo2zXhgVDbyf0nVED4iE_M&components=hosted-buttons&disable-funding=venmo,paylater,credit,card&currency=USD"></script>
                 <div id="paypal-container-CZL4TC7FR2V44"></div>
                 <script>
@@ -288,6 +293,7 @@
                     hostedButtonId: "CZL4TC7FR2V44",
                     }).render("#paypal-container-CZL4TC7FR2V44")
                 </script>
+
             </div>
         </div>
     </div>
@@ -335,7 +341,7 @@
                     itemsListHTML += '<li><div class="row"><div class="col-md-2">' + size + '</div><div class="col-md-2">' + quantity + '</div><div class="col-md-2">$' + price + '</div><div class="col-md-2">$' + total + '</div></div></li>';
                 });
                 $('#items-list').html(itemsListHTML);
-                $('#final-price').text(totalPrice);
+                $('#final-price').text('$' + totalPrice);
             }
             
             // Show user details form when "Proceed with PayPal" button is clicked

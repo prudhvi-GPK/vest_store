@@ -33,6 +33,13 @@ def add_to_cart(request, quantity, size):
 
     return redirect('cart_page')
 
+def checkout(request):
+    # Your checkout logic goes here
+    return render(request, 'vest_store_app/checkout.html')
+
+def order_confirmation(request):
+    # Your order confirmation logic goes here
+    return render(request, 'vest_store_app/order_confirmation.html')
 def store_user_details(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -46,3 +53,4 @@ def store_user_details(request):
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
