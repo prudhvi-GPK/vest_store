@@ -172,17 +172,24 @@
             });
             updateCartSymbol();
         };
-        function addToCart() {
-          const sizeDropdown = document.getElementById("sizeDropdown");
-          const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
-          const quantityInput = document.getElementById("quantityInput");
-          const quantity = parseInt(quantityInput.value);
+        let cart = [];
 
-          cartItems += quantity;
-          updateCartSymbol();
-          alert("Vest(s) added to cart");
-          const url = `/add_to_cart/${quantity}/${selectedSize}/`;
-          window.location.href = url; // Redirect to the cart page URL
+        function addToCart() {
+            const sizeDropdown = document.getElementById("sizeDropdown");
+            const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;
+            const quantityInput = document.getElementById("quantityInput");
+            const quantity = parseInt(quantityInput.value);
+            
+            // Add the item to the cart array
+            cart.push({ size: selectedSize, quantity: quantity });
+
+            // Increment the total cartItems count
+            cartItems += quantity;
+
+            updateCartSymbol(); // Call updateCartSymbol to update the cart symbol
+
+            // Redirect to the cart page
+            window.location.href = "{% url 'cart_page' %}";
         }
 
 
