@@ -436,15 +436,14 @@ img{
 }
 
 .cart-symbol {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 25px;
   font-size: 25px;
   color: #ffffff;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1005;
 }
-
 
 footer {
   background-color: #4C4E52;

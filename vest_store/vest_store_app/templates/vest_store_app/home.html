@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,161 +10,165 @@
     <link rel="stylesheet" href="{% static 'css/vest.css' %}" />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about_page' %}">About Us</a></li>
-          <li><a href="{% url 'cart_page' %}">Cart</a></li>
-          <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about_page' %}">About Us</a></li>
+        <li><a href="{% url 'cart_page' %}">Cart</a></li>
+        <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
+      </ul>
+    </nav>
+</header>
+    
+  <section id="home" class="bg-cover hero-section" >
+    <div class="overlay"></div>
+    <div class="container text-white ">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="custom-heading" data-aos="zoom-in" > Stay Safe with 25 MPH Vest</h2>
+                <p class="custom-paragraph" data-aos="fade-up"  >
+                  Enhance your visibility and stay safe during outdoor activities with our lightweight vest. Perfect for cyclists, joggers, and walkers alike.</p>
+                <br>  
+                <a href="#services" data-aos="fade-up" class="btn btn-main" id="getStartedButton">View Product</a>
 
-    <div class="hero">
-      <div class="hero-content">
-        <svg>
-          <text x="50%" y="40%" text-anchor="middle">
-            Stay Safe with 25 MPH Vest
-          </text>
-        </svg>
-        <h4 style="margin-top: -50px; " >
-          Protect yourself while cycling with our high-visibility safety vest.
-        </h4>
-
-        <div class="features">
-          <div class="cards-container">
-            <div class="card">
-              <div class="card-content">
-                <h3>High Visibility</h3>
-                <p>Stay visible to motorists day or night.</p>
-                <div class="product-slider">
-                  <div class="slider slider1">
-                    <div class="slide"><img src="{% static 'images/img4.jpeg' %}" alt="Image 1"></div>
-                    <div class="slide"><img src="{% static 'images/img5.jpeg' %}" alt="Image 2"></div>
-                    <div class="slide"><img src="{% static 'images/img6.jpeg' %}" alt="Image 3"></div>
-                  </div>
-                  <button class="prev" onclick="prevSlide(1)">&#10094;</button>
-                  <button class="next" onclick="nextSlide(1)">&#10095;</button>
-                </div>
-              </div>
             </div>
-
-
-            <div class="cta" style="display: flex; flex-direction: column; align-items: center; background-color: #abb0b8;">
-              <label for="sizeDropdown">Select Size:</label>
-              <select id="sizeDropdown">
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
-              </select>
-              <label for="quantityInput">Quantity:</label>
-              <input type="number" id="quantityInput" value="1" min="1">
-              <button onclick="addToCart()" style="margin-top: 10px; width: 150px;">Add to Cart</button>
-              <button onclick="togglePopup()" class="button" style="margin-top: 10px">Size Chart</button>
-          </div>
-
-          <div class="popup" id="popup-1">
-            <div class="overlay"></div>
-            <div class="content">
-              <div class="close-btn" onclick="togglePopup()">&times;</div>
-              <h3>Safety Vest Size chart</h3>
-              <table class="size-chart-table">
-                <thead>
-                  <tr>
-                    <th>Size</th>
-                    <th>Chest Width</th>
-                    <th>Length</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>S</td>
-                    <td>13cm / 33.02inch</td>
-                    <td>22cm / 55.88inch</td>
-                  </tr>
-                  <tr>
-                    <td>M</td>
-                    <td>16.5cm / 41.91inch</td>
-                    <td>25cm / 63.5inch</td>
-                  </tr>
-                  <tr>
-                    <td>L</td>
-                    <td>27cm / 68.58inch</td>
-                    <td>18cm / 45.72inch</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <script>
-            function togglePopup() {
-              document.getElementById("popup-1").classList.toggle("active");
-            }
-          </script>
-
-          <div class="card">
-          <div class="card-content" style="background-color: white">
-            <h3>Lightweight</h3>
-            <p>Comfortable and easy to wear.</p>
-            <div class="product-slider">
-              <div class="slider slider2">
-                <div class="slide"><img src="{% static 'images/img1.jpeg' %}" alt="Image 1"></div>
-                <div class="slide"><img src="{% static 'images/img2.jpeg' %}" alt="Image 2"></div>
-                <div class="slide"><img src="{% static 'images/img3.jpeg' %}" alt="Image 3"></div>
-              </div>
-
-              <button class="prev" onclick="prevSlide(2)">&#10094;</button>
-              <button class="next" onclick="nextSlide(2)">&#10095;</button>
-            </div>
-          </div>
-
         </div>
-      </div>
     </div>
+</section> 
+
+<section id="services">
+<div class="main-wrapper" id="productDetails">
+  <!-- <div class="container"> -->
+    <div class ="product-div">
+      <div class= "product-div-left">
+        <div class="product-slider">
+          <div class="slider slider1">
+              <!--<div class="slide"><img src="{% static 'images/shop8.png' %}" alt="Vest Image" ></div>-->
+              <div class="slide"><img src="{% static 'images/img12.png' %}" alt="Image 1"></div>
+              <div class="slide"><img src="{% static 'images/img33.png' %}" alt="Image 2"></div>
+              <div class="slide"><img src="{% static 'images/img22.png' %}" alt="Image 3"></div>
+          </div>
+          <button class="prev" onclick="prevSlide(1)">&#10094;</button>
+          <button class="next" onclick="nextSlide(1)">&#10095;</button>
+      </div>
+      <div class="hover-container">
+          <!--<div><img src="{% static 'images/shop8.png' %}" alt="Vest Image" ></div>-->
+          <div><img src="{% static 'images/img12.png' %}" alt="Image 1"></div>
+          <div><img src="{% static 'images/img33.png' %}" alt="Image 2"></div>
+          <div><img src="{% static 'images/img22.png' %}" alt="Image 3"></div>
+      </div>
+  </div>
+      
+      <div class="product-div-right">
+        <span class ="product-title" style="font-size:30px;">Safety Vest </span>
+        <div class="product-description">Crafted with premium materials and offers unparalleled safety and comfort.</div>
+        <span class ="product-price" style="display:flex;">$12.99</span>
+        <div class ="btn-groups">
+          <div class="size">
+            <label style="margin-right:5px; font-size: 20px;">Size: </label>
+            <select id="sizeDropdown">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option> 
+            </select>  
+        </div> 
+        <a type="button" class="button" onclick="togglePopup()" style="margin-top: 10px; color: blue; text-decoration: underline; display: flex; font-size: 20px;"> Size Chart</a>  
+        <br> 
+        <div class="quantity" style="display: flex;  height:30px;">
+            <label style="margin-right:5px; font-size: 20px;">Quantity: </label>
+            <input type="number" id="quantityInput" value="1" min="1" style="width:100px;">
+        </div>  
+        <br>
+        <button type="button" class="add-cart-btn" onclick="addToCart()" style="margin-top: 10px; width: 150px;">
+          <i class="fas-fa-shopping-cart"></i> Add to Cart
+        </button>
+         
+        <div class="popup" id="popup-1">
+          <div class="overlay"></div>
+          <div class="content">
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+            <h3>Safety Vest Size chart</h3>
+            <table class="size-chart-table">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Chest Width</th>
+                  <th>Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>S</td>
+                  <td>13cm / 33.02inch</td>
+                  <td>22cm / 55.88inch</td>
+                </tr>
+                <tr>
+                  <td>M</td>
+                  <td>16.5cm / 41.91inch</td>
+                  <td>25cm / 63.5inch</td>
+                </tr>
+                <tr>
+                  <td>L</td>
+                  <td>27cm / 68.58inch</td>
+                  <td>18cm / 45.72inch</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <script>
+          function togglePopup() {
+            document.getElementById("popup-1").classList.toggle("active");
+          }
+        </script>
+      </div>
+
+          
+        </div>
+      <!--</div>-->
+
+    </div>
+  </div>
+</div>
+</section>
+
 
 
     <div id ="cartSymbol" class="cart-symbol">🛒0</div>
 
     <script>
 
-      let slideIndex1 = 0;
-      let slideIndex2 = 0;
+    // Function to slide images
+    let slideIndex1 = 0;
 
-      function showSlide(n, sliderIndex) {
+    function showSlide(n, sliderIndex) {
         const slides = document.querySelectorAll(`.slider${sliderIndex} .slide`);
         if (slides.length === 0) return;
         const index = (n + slides.length) % slides.length;
         for (let i = 0; i < slides.length; i++) {
-          slides[i].style.display = 'none';
+            slides[i].style.display = 'none';
         }
         slides[index].style.display = 'block';
         if (sliderIndex === 1) {
-          slideIndex1 = index;
-        } else if (sliderIndex === 2) {
-          slideIndex2 = index;
+            slideIndex1 = index;
         }
-      }
+    }
 
-      function nextSlide(sliderIndex) {
+    function nextSlide(sliderIndex) {
         if (sliderIndex === 1) {
-          showSlide(slideIndex1 + 1, 1);
-        } else if (sliderIndex === 2) {
-          showSlide(slideIndex2 + 1, 2);
+            showSlide(slideIndex1 + 1, 1);
         }
-      }
+    }
 
-      function prevSlide(sliderIndex) {
+    function prevSlide(sliderIndex) {
         if (sliderIndex === 1) {
-          showSlide(slideIndex1 - 1, 1);
-        } else if (sliderIndex === 2) {
-          showSlide(slideIndex2 - 1, 2);
+            showSlide(slideIndex1 - 1, 1);
         }
-      }
+    }
 
-      showSlide(slideIndex1, 1);
-      showSlide(slideIndex2, 2);
+    showSlide(slideIndex1, 1);
+
 
         let cartItems = 0;
         window.onload = function() {
@@ -178,12 +183,9 @@
           const quantityInput = document.getElementById("quantityInput");
           const quantity = parseInt(quantityInput.value);
 
-          cartItems += quantity;
-          updateCartSymbol();
-          alert("Vest(s) added to cart");
           const url = `/add_to_cart/${quantity}/${selectedSize}/`;
           window.location.href = url; // Redirect to the cart page URL
-        }
+}
 
 
       function updateCartSymbol() {
@@ -194,14 +196,55 @@
             cartSymbol.innerText = '🛒  0';
         }
     }
+ // Function to update background image
+    const backgroundImages = [
+        "{% static 'images/background1.png' %}",
+        "{% static 'images/background2.png' %}",
+        "{% static 'images/background3.png' %}"
+        
+    ];
+    function updateBackgroundImage() {
+        const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+        const imageUrl = backgroundImages[randomIndex];
+        document.getElementById('home').style.backgroundImage = `url(${imageUrl})`;
+    }
+
+    updateBackgroundImage();
+    setInterval(updateBackgroundImage, 2000); 
+
+
+
+    // Function to update hover images
+    const allHoverImages = document.querySelectorAll('.hover-container div img')
+    const imgContainer = document.querySelector('.product-slider')
+
+    window.addEventListener('DOMContentLoaded',() =>{
+      allHoverImages[0].parentElement.classList.add('active');
+    } );
+
+    allHoverImages.forEach((image) =>{
+      image.addEventListener('mouseover',() =>{
+        imgContainer.querySelector('img').src= image.src;
+        image.parentElement.classList.add('active');
+      });
+    });
+
+    function resetActiveImg(){
+      allHoverImages.forEach((img) => {
+        img.parentElement.classList.remove('active');
+      });
+    }
+
+    
+
     </script>
 
-<footer>
-  <div class="social-icons">
-      <!-- Social icons -->
-  </div>
-  <a href="{% url 'admin:index' %}" class="admin-link" style="color: white;">Admin</a>
-  <p>&copy; 2024 VEST STORE. All rights reserved.</p>
-</footer>
-</body>
+    
+    
+    <footer>
+        <div class="social-icons"></div>
+        <p>&copy; 2024 UNH 25 MPH Vest. All rights reserved.</p>
+    </footer>
+
+  </body>
 </html>
