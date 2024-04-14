@@ -3,10 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=no">
     <title>Shopping Cart</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/vest.css' %}" />
     <!-- Custom CSS -->
     <style>
         body {
@@ -16,29 +17,29 @@
         }
 
         header {
-            background-color: #343a40;
+            background-color: #4C4E52;
             color: white;
-            padding: 1em;
+            padding: 1.2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-        }
+            }
 
-        nav ul {
+            nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             text-align: left;
-        }
+            }
 
-        nav ul li {
+            nav ul li {
             display: inline;
             margin: 0 10px;
-        }
+            }
 
-        nav ul li a {
+            nav ul li a {
             color: #fff;
             text-decoration: none;
         }
@@ -133,6 +134,16 @@
             margin-top: 10px;
         }
 
+        footer {
+        background-color: #4C4E52;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        border-radius: 10px;
+        z-index: 99;
+    }
+
         /* Custom styles for order summary card */
         #order-summary-card {
             background-color: #f8f9fa;
@@ -144,7 +155,7 @@
         }
 
         #order-summary-card .card-header {
-            background-color: #343a40;
+            background-color: #4C4E52;
             color: white;
             border-radius: 8px 8px 0 0;
         }
@@ -181,7 +192,6 @@
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about_page' %}">About Us</a></li>
-                <li><a href="{% url 'cart_page' %}">Cart</a></li>
                 <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
             </ul>
         </nav>
@@ -311,5 +321,12 @@
             }
         });
     </script>
+
+
+
+<footer style="padding: 0.3em; text-align: center;">
+    <a href="{% url 'admin:index' %}" style="color: white;">Admin Login</a>
+    <p style="margin-bottom: auto;">&copy; 2024 25 MPH Vest. All rights reserved.</p>
+  </footer>
 </body>
 </html>
