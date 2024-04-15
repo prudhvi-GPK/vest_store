@@ -334,7 +334,7 @@ img{
 }  
 
 .size{
-  display: center;
+  display: flex;
   align-items:center;
 }
 
