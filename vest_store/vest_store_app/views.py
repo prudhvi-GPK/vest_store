@@ -13,9 +13,6 @@ def cart_page(request):
     cart = request.session.get('cart', {})
     return render(request, 'vest_store_app/cart.html', {'cart': cart})
 
-
-
-
 def add_to_cart(request, quantity, size):
     cart = request.session.get('cart', {})
 
@@ -28,25 +25,19 @@ def add_to_cart(request, quantity, size):
 
     request.session['cart'] = cart
     request.session.modified = True
-
     print("Cart contents after adding:", request.session.get('cart', 'Cart is empty'))
 
     return redirect('cart_page')
-
 def checkout(request):
-    # Your checkout logic goes here
     return render(request, 'vest_store_app/checkout.html')
 
 def order_confirmation(request):
-    # Your order confirmation logic goes here
     return render(request, 'vest_store_app/order_confirmation.html')
 def store_user_details(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
-        
-        # Create a new instance of UserDetails model and save to the database
         user_details = UserDetails.objects.create(name=name, phone=phone, email=email)
         user_details.save()
         
