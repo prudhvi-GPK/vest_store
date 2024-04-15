@@ -11,8 +11,7 @@
         /* Add your custom CSS styles here */
     </style>
 </head>
-<body>
-    
+  <body>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -21,7 +20,7 @@
         </div>
     <div class="container">
         <h1>Checkout</h1>
-        <form action="{% url 'order_confirmation' %}" method="POST"> 
+        <form action="{% url 'order_confirmation' %}" method="POST">
             {% csrf_token %}
             <!-- Shipping Address Section -->
             <h2>Shipping Address</h2>
@@ -102,7 +101,11 @@
                 <input type="text" class="form-control" id="pincode" name="pincode" pattern="[0-9]{5}" title="Please enter 5 digits" required>
             </div>
 
+            <!-- Next Button -->
+            <button type="button" class="btn btn-primary mb-3" id="nextButton">Next</button>
+
             <!-- Payment Method Section -->
+            <div id="paymentMethodSection" style="display: none;">
             <h2>Payment Method</h2>
             <script src="https://www.paypal.com/sdk/js?client-id=BAAIL1OZT-uimbfSFztcDzDge10Fa9bJlLQSBJyZQtCLbF_UMMQoYab2iX4PUo2zXhgVDbyf0nVED4iE_M&components=hosted-buttons&disable-funding=venmo,paylater,credit,card&currency=USD"></script>
             <div id="paypal-container-CZL4TC7FR2V44"></div>
@@ -110,8 +113,10 @@
                 paypal.HostedButtons({
                 hostedButtonId: "CZL4TC7FR2V44",
                 onApprove: function() {
-                    window.location.href = "order_confirmation.html";
-                }
+                    if (validateForm()) {
+                        window.location.href = "order_confirmation.html";
+                    }
+                  }
                 }).render("#paypal-container-CZL4TC7FR2V44")
             </script>
             <!-- Other Details Section (Optional) -->
@@ -122,5 +127,39 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+     <script>
+        document.getElementById("nextButton").addEventListener("click", function() {
+            // Validate the form
+            if (validateForm()) {
+                // If form validation passes, show the Payment Method section
+                document.getElementById("paymentMethodSection").style.display = "block";
+            }
+        });
+
+        function validateForm() {
+            // Check if any of the required fields are empty
+            var name = document.getElementById("name").value;
+            var street1 = document.getElementById("street1").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var pincode = document.getElementById("pincode").value;
+
+            if (name.trim() === "" || street1.trim() === "" || city.trim() === "" || state.trim() === "" || pincode.trim() === "") {
+                alert("Please fill in all required fields.");
+                return false; // Prevent form submission
+            }
+
+            // Validate pincode format (5 digits)
+            var pincodePattern = /^\d{5}$/;
+            if (!pincode.match(pincodePattern)) {
+                alert("Please enter a valid 5-digit pincode.");
+                return false; // Prevent form submission
+            }
+
+            // If all validations pass, allow form submission
+            return true;
+        }
+    </script>
+  </body>
 </html>
