@@ -3,10 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=no">
     <title>Shopping Cart</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/vest.css' %}" />
     <!-- Custom CSS -->
     <style>
         body {
@@ -16,29 +17,29 @@
         }
 
         header {
-            background-color: #343a40;
+            background-color: #4C4E52;
             color: white;
-            padding: 1em;
+            padding: 1.2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-        }
+            }
 
-        nav ul {
+            nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             text-align: left;
-        }
+            }
 
-        nav ul li {
+            nav ul li {
             display: inline;
             margin: 0 10px;
-        }
+            }
 
-        nav ul li a {
+            nav ul li a {
             color: #fff;
             text-decoration: none;
         }
@@ -89,7 +90,7 @@
         }
 
         footer {
-            background-color: #343a40;
+            background-color: #4C4E52;
             color: white;
             text-align: center;
             padding: 20px;
@@ -133,6 +134,16 @@
             margin-top: 10px;
         }
 
+        footer {
+        background-color: #4C4E52;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        border-radius: 10px;
+        z-index: 99;
+    }
+
         /* Custom styles for order summary card */
         #order-summary-card {
             background-color: #f8f9fa;
@@ -144,7 +155,7 @@
         }
 
         #order-summary-card .card-header {
-            background-color: #343a40;
+            background-color: #4C4E52;
             color: white;
             border-radius: 8px 8px 0 0;
         }
@@ -173,6 +184,12 @@
         #order-summary-card .buttons .checkout-btn {
             margin-top: 20px;
         }
+        .card-header {
+    text-align: center;
+    background-color: #4C4E52; /* Grey background color */
+    color: white; /* White text color */
+    padding: 20px; /* Adjust padding as needed */
+}
     </style>
 </head>
 <body>
@@ -181,7 +198,7 @@
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about_page' %}">About Us</a></li>
-                <li><a href="{% url 'cart_page' %}">Cart</a></li>
+                <div id ="cartSymbol" class="cart-symbol"><a href="{% url 'cart_page' %}"> 🛒</a></div>
                 <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
             </ul>
         </nav>
@@ -193,7 +210,7 @@
             </div>
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-md-2"><strong> Product</strong></div>
+                    <div class="col-md-2"><strong>&nbsp;&nbsp;&nbsp;Product</strong></div>
                     <div class="col-md-2"><strong> Size</strong></div>
                     <div class="col-md-2"><strong> Quantity</strong></div>
                     <div class="col-md-2"><strong> Price</strong></div>
@@ -210,7 +227,7 @@
                                 </div>
                                 <div class="col-md-2 size-label">
                                     <!-- Size placeholder -->
-                                    <span>{{ item }}</span>
+                                    <span>{{ item|slice:":1"|upper }}</span>
                                 </div>
                                 <div class="col-md-2">
                                     <input type="number" class="quantity-input form-control" value="{{ quantity }}" min="1">
@@ -218,8 +235,11 @@
                                 <div class="col-md-2">
                                     <span>$12.99</span>
                                 </div>
-                                <div class="col-md-2 actions">
-                                    <button class="btn btn-danger delete-btn">Delete</button>
+                                <div class="col-md-2 ">
+                                    <form action="{% url 'delete_from_cart' size=item %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" style="color: white; background-color: rgb(217, 49, 49);">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -230,6 +250,10 @@
                     </div>
                 {% else %}
                     <p class="empty-cart-message">Your cart is empty</p>
+                    <div class="buttons text-center">
+                        <a href="{% url 'home' %}" class="btn btn-success continue-shopping-btn">Continue Shopping</a>
+                        <button class="btn btn-success order-summary-btn">Order Summary</button>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -257,8 +281,9 @@
                     <div class="col-md-2"><strong>Subtotal:</strong></div>
                     <div class="col-md-4">$<span id="final-price">0</span></div>
                 </div>
+
                 <div class="buttons text-center">
-                    <a href="{% url 'checkout' %}"> <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+                    <a href="{% url 'checkout' %}?total={{ totalPrice }}" class="btn btn-primary checkout-btn">Proceed to Checkout</a>
                 </div>
             </div>
         </div>
@@ -276,11 +301,22 @@
             });
 
             // Remove item when delete button is clicked
-            $('.delete-btn').click(function() {
-                $(this).closest('.cart-item').remove();
-                calculateTotalPrice();
-                calculateOrderSummary();
-            });
+            $(document).on('click', '.delete-btn', function() {
+    // Find the parent cart item element and remove it
+    $(this).closest('.cart-item').remove();
+
+    // Update cart symbol
+    updateCartSymbol();
+});
+
+function updateCartSymbol() {
+    // Calculate the total number of items in the cart
+    var totalItems = $('.cart-item').length;
+
+    // Update the cart symbol display
+    const cartSymbol = document.getElementById('cartSymbol');
+    cartSymbol.innerText = '🛒' + totalItems;
+}
 
             // Calculate total price
             function calculateTotalPrice() {
@@ -304,12 +340,31 @@
                     var quantity = $(this).find('.quantity-input').val();
                     var price = 12.99; // Replace with actual price per item
                     var total = (price * quantity).toFixed(2);
-                    itemsListHTML += '<li><div class="row"><div class="col-md-2">' + size + '</div><div class="col-md-2">' + quantity + '</div><div class="col-md-2">$' + price + '</div><div class="col-md-2">$' + total + '</div></div></li>';
-                });
+                    itemsListHTML += '<li><div class="row"><div class="col-md-2">' + size + ' </div><div class="col-md-2">&nbsp;&nbsp;&nbsp;' + quantity + ' </div><div class="col-md-2">$' + price + ' </div><div class="col-md-2">$' + total + '</div></div></li>';
+ });
                 $('#items-list').html(itemsListHTML);
-                $('#final-price').text('$' + totalPrice);
+                $('#final-price').text( totalPrice);
+                $('.checkout-btn').click(function(event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor tag
+
+        var checkoutUrl = $(this).attr('href'); // Get the checkout URL from the button's href attribute
+        var totalPrice = calculateTotalPrice(); // Get the total price
+
+        // Append the total price to the checkout URL as a query parameter
+        var urlWithTotal = checkoutUrl + totalPrice;
+
+        // Redirect to the checkout page with the updated URL
+        window.location.href = urlWithTotal;
+    });
             }
+
         });
     </script>
+
+
+
+        <footer style="padding: 1.1em; text-align: center;">
+                    <p style="margin-bottom: auto;">&copy; 2024 25 MPH Vest. All rights reserved.</p>
+        </footer>
 </body>
 </html>

@@ -4,7 +4,7 @@
   
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Vest Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{% static 'css/vest.css' %}" />
@@ -15,7 +15,6 @@
       <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about_page' %}">About Us</a></li>
-        <li><a href="{% url 'cart_page' %}">Cart</a></li>
         <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
       </ul>
     </nav>
@@ -26,8 +25,8 @@
     <div class="container text-white ">
         <div class="row">
             <div class="col-12">
-                <h2 class="custom-heading" data-aos="zoom-in" > Stay Safe with 25 MPH Vest</h2>
-                <p class="custom-paragraph" data-aos="fade-up"  >
+                <h2 class="main-title" data-v-946d0c05 data-cmp-info="9" style="font-size:35px; font-weight:bold;"> Stay Safe with 25 MPH Vest</h2>
+                <p class="custom-paragraph" data-aos="fade-up" style="font-size:22px;"  >
                   Enhance your visibility and stay safe during outdoor activities with our lightweight vest. Perfect for cyclists, joggers, and walkers alike.</p>
                 <br>  
                 <a href="#services" data-aos="fade-up" class="btn btn-main" id="getStartedButton">View Product</a>
@@ -88,12 +87,12 @@
           <div class="overlay"></div>
           <div class="content">
             <div class="close-btn" onclick="togglePopup()">&times;</div>
-            <h3>Safety Vest Size chart</h3>
+            
             <table class="size-chart-table">
               <thead>
                 <tr>
                   <th>Size</th>
-                  <th>Chest Width</th>
+                  <th>Width</th>
                   <th>Length</th>
                 </tr>
               </thead>
@@ -135,7 +134,7 @@
 
 
 
-    <div id ="cartSymbol" class="cart-symbol">🛒0</div>
+    <div id ="cartSymbol" class="cart-symbol">🛒</div>
 
     <script>
 
@@ -193,7 +192,7 @@
         if (cartItems > 0) {
             cartSymbol.innerText = '🛒' + cartItems;
         } else {
-            cartSymbol.innerText = '🛒  0';
+            cartSymbol.innerText = '🛒  ';
         }
     }
  // Function to update background image
@@ -210,7 +209,7 @@
     }
 
     updateBackgroundImage();
-    setInterval(updateBackgroundImage, 2000); 
+    setInterval(updateBackgroundImage, 5000); 
 
 
 
@@ -240,14 +239,13 @@
     </script>
 
     
-    
-<footer>
-  <div class="social-icons">
-      <!-- Social icons -->
-  </div>
-  <a href="{% url 'admin:index' %}" class="admin-link" style="color: white;">Admin</a>
-  <p>&copy; 2024 VEST STORE. All rights reserved.</p>
+
+
+<footer style="padding: 0.3em; text-align: center;">
+  <a href="{% url 'admin:index' %}" style="color: white;">Admin Login</a>
+  <p style="margin-bottom: auto;">&copy; 2024 25 MPH Vest. All rights reserved.</p>
 </footer>
+
 
   </body>
 </html>

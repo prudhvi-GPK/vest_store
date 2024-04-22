@@ -69,16 +69,16 @@ section {
   padding-bottom: 60px;
   z-index: 0.5;
   position: relative;
-  
+
 }
 
 h2.display-4 {
-  color: white; 
+  color: white;
 }
 
 
 p.my-4 {
-  color: white; 
+  color: white;
 }
 
 
@@ -108,7 +108,7 @@ p.my-4 {
 
 .btn {
   padding: 14px 22px;
-  
+
 }
 
 .btn-main {
@@ -123,7 +123,7 @@ p.my-4 {
   color: #868689;
   #a88163
   #BCFD4C
-  
+
 }*/
 
 
@@ -199,7 +199,7 @@ img{
   border: none;
   cursor: pointer;
   z-index: 3;
-  
+
 }
 
 .prev {
@@ -230,7 +230,7 @@ img{
 
 .active{
   border-color: rgb(255,145,163) ! important;
-  
+
 }
 
 .hover-container div:hover{
@@ -269,9 +269,9 @@ img{
   font-weight:50%;
   font-size:20px;
   line-height:1.6;
-  
-  line-height: 30px; 
-  margin-bottom: 10px; 
+
+  line-height: 30px;
+  margin-bottom: 10px;
 }
 
 .btn-groups{
@@ -331,10 +331,10 @@ img{
     width:100%;
     margin-bottom:10px;
   }
-}  
+}
 
 .size{
-  display: center;
+  display: flex;
   align-items:center;
 }
 
@@ -407,7 +407,7 @@ img{
 }
 
 .container {
-  padding-top: 100px; 
+  padding-top: 100px;
 }
 
 
