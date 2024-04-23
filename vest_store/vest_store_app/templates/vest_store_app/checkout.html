@@ -246,6 +246,21 @@
         // If all validations pass, allow form submission
         return true;
     }
+    document.addEventListener('DOMContentLoaded', function() {
+    var donateLink = document.getElementById('donateLink');
+    donateLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        var url = "https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C";
+        var width = 600;
+        var height = 400;
+        var left = (window.innerWidth - width) / 2;
+        var top = (window.innerHeight - height) / 2;
+        var options = 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=' + width + ',height=' + height + ',top=' + top + ',left=' + left;
+
+        window.open(url, 'PayPal_Donation', options); // Open the popup window
+    });
+    });
 </script>
 </body>
 </html>
