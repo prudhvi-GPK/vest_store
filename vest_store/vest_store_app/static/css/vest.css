@@ -69,16 +69,16 @@ section {
   padding-bottom: 60px;
   z-index: 0.5;
   position: relative;
-  
+
 }
 
 h2.display-4 {
-  color: white; 
+  color: white;
 }
 
 
 p.my-4 {
-  color: white; 
+  color: white;
 }
 
 
@@ -108,7 +108,7 @@ p.my-4 {
 
 .btn {
   padding: 14px 22px;
-  
+
 }
 
 .btn-main {
@@ -123,7 +123,7 @@ p.my-4 {
   color: #868689;
   #a88163
   #BCFD4C
-  
+
 }*/
 
 
@@ -199,7 +199,7 @@ img{
   border: none;
   cursor: pointer;
   z-index: 3;
-  
+
 }
 
 .prev {
@@ -230,7 +230,7 @@ img{
 
 .active{
   border-color: rgb(255,145,163) ! important;
-  
+
 }
 
 .hover-container div:hover{
@@ -269,9 +269,9 @@ img{
   font-weight:50%;
   font-size:20px;
   line-height:1.6;
-  
-  line-height: 30px; 
-  margin-bottom: 10px; 
+
+  line-height: 30px;
+  margin-bottom: 10px;
 }
 
 .btn-groups{
@@ -294,8 +294,8 @@ img{
 }
 
 .add-cart-btn{
-  background-color: #73c13b;
-  border: 1px solid white;
+  background-color: #395284;
+  border: 1px solid black;
   margin-right:8px;
   min-width: 20rem;
   border-radius: 20px;
@@ -331,7 +331,7 @@ img{
     width:100%;
     margin-bottom:10px;
   }
-}  
+}
 
 .size{
   display: flex;
@@ -407,7 +407,7 @@ img{
 }
 
 .container {
-  padding-top: 100px; 
+  padding-top: 100px;
 }
 
 
@@ -449,7 +449,7 @@ footer {
   background-color: #4C4E52;
   color: white;
   text-align: center;
-  padding: 1.2em;
+  padding: 10px;
   position: fixed;
   bottom: 0;
   width:100%;
