@@ -50,17 +50,15 @@
         }
 
         .card {
-            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
             margin-bottom: 20px;
         }
 
         .card-header {
             background-color: #f8f9fa;
             border-bottom: 1px solid #dee2e6;
-            padding-bottom: 15px;
+            padding: 15px;
             margin-bottom: 20px;
         }
 
@@ -68,9 +66,22 @@
             margin-bottom: 0;
         }
 
-        .cart-item {
-            padding: 15px;
-            border-bottom: 1px solid #dee2e6;
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body .row {
+            margin-bottom: 10px;
+        }
+
+        .card-body img {
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .card-body .row {
+                flex-wrap: wrap;
+            }
         }
 
         .shirt-details {
@@ -89,20 +100,6 @@
             margin-top: 50px;
         }
 
-        footer {
-            background-color: #4C4E52;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        footer p {
-            margin: 0;
-        }
 
         .quantity-input {
             width: 50px;
@@ -210,32 +207,32 @@
             </div>
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-md-2"><strong>&nbsp;&nbsp;&nbsp;Product</strong></div>
-                    <div class="col-md-2"><strong> Size</strong></div>
-                    <div class="col-md-2"><strong> Quantity</strong></div>
-                    <div class="col-md-2"><strong> Price</strong></div>
-                    <div class="col-md-2"><strong> Action</strong></div>
+                    <div class="col"><strong>&nbsp;&nbsp;&nbsp;Product</strong></div>
+                    <div class="col"><strong> Size</strong></div>
+                    <div class="col"><strong> Quantity</strong></div>
+                    <div class="col"><strong> Price</strong></div>
+                    <div class="col"><strong> Action</strong></div>
                 </div>
                 {% if cart %}
                     {% for item, quantity in cart.items %}
                         <div class="cart-item">
                             <div class="row align-items-center">
-                                <div class="col-md-2">
+                                <div class="col">
                                     <div class="shirt-details">
                                         <img src="{% static 'images/vest.png' %}">
                                     </div>
                                 </div>
-                                <div class="col-md-2 size-label">
+                                <div class="col size-label">
                                     <!-- Size placeholder -->
                                     <span>{{ item|slice:":1"|upper }}</span>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col">
                                     <input type="number" class="quantity-input form-control" value="{{ quantity }}" min="1">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col">
                                     <span>$12.99</span>
                                 </div>
-                                <div class="col-md-2 ">
+                                <div class="col">
                                     <form action="{% url 'delete_from_cart' size=item %}" method="POST">
                                         {% csrf_token %}
                                         <button type="submit" style="color: white; background-color: rgb(217, 49, 49);">Delete</button>
@@ -264,22 +261,22 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2"><strong>Size</strong></div>
-                    <div class="col-md-2"><strong>Quantity</strong></div>
-                    <div class="col-md-2"><strong>Price</strong></div>
-                    <div class="col-md-2"><strong>Total</strong></div>
+                    <div class="col"><strong>Size</strong></div>
+                    <div class="col"><strong>Quantity</strong></div>
+                    <div class="col"><strong>Price</strong></div>
+                    <div class="col"><strong>Total</strong></div>
                 </div>
                 <hr>
                 <ul id="items-list"></ul>
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-2"><strong>Discount:</strong></div>
-                    <div class="col-md-4">$<span id="discount">0</span></div>
+                    <div class="col"></div>
+                    <div class="col"><strong>Discount:</strong></div>
+                    <div class="col">$<span id="discount">0</span></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-2"><strong>Subtotal:</strong></div>
-                    <div class="col-md-4">$<span id="final-price">0</span></div>
+                    <div class="col"></div>
+                    <div class="col"><strong>Subtotal:</strong></div>
+                    <div class="col">$<span id="final-price">0</span></div>
                 </div>
 
                 <div class="buttons text-center">
@@ -340,7 +337,7 @@ function updateCartSymbol() {
                     var quantity = $(this).find('.quantity-input').val();
                     var price = 12.99; // Replace with actual price per item
                     var total = (price * quantity).toFixed(2);
-                    itemsListHTML += '<li><div class="row"><div class="col-md-2">' + size + ' </div><div class="col-md-2">&nbsp;&nbsp;&nbsp;' + quantity + ' </div><div class="col-md-2">$' + price + ' </div><div class="col-md-2">$' + total + '</div></div></li>';
+                    itemsListHTML += '<li><div class="row"><div class="col">' + size + ' </div><div class="col">&nbsp;&nbsp;&nbsp;' + quantity + ' </div><div class="col">$' + price + ' </div><div class="col">$' + total + '</div></div></li>';
  });
                 $('#items-list').html(itemsListHTML);
                 $('#final-price').text( totalPrice);
@@ -378,8 +375,9 @@ function updateCartSymbol() {
 
 
 
-        <footer style="padding: 1.1em; text-align: center;">
-                    <p style="margin-bottom: auto;">&copy; 2024 25 MPH Vest. All rights reserved.</p>
-        </footer>
+<footer style="padding: 0.2em; text-align: center;">
+    <p style="margin-bottom: auto;"><b>Contact Us:</b> <a href="mailto:25mphvest@gmail.com">25mphvest@gmail.com</a> <br>
+      <b>Address:</b> 62 Calef Highway #240, Lee, NH, USA</p>
+  </footer>
 </body>
 </html>
