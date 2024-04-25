@@ -1,10 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from .models import UserDetails
+from .models import Vest
+
 
 
 def home(request):
-    return render(request, 'vest_store_app/home.html')
+    # Retrieve all vest objects from the database
+    vests = Vest.objects.all()
+    return render(request, 'vest_store_app/home.html', {'vests': vests})
 
 def about_page(request):
     return render(request, 'vest_store_app/about.html')

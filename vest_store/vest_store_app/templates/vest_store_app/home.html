@@ -59,29 +59,54 @@
       </div>
   </div>
       
-      <div class="product-div-right">
-        <span class ="product-title" style="font-size:30px;">Safety Vest </span>
-        <div class="product-description">Crafted with premium materials and offers unparalleled safety and comfort.</div>
-        <span class ="product-price" style="display:flex;">$12.99</span>
-        <div class ="btn-groups">
-          <div class="size">
-            <label style="margin-right:5px; font-size: 20px;">Size: </label>
-            <select id="sizeDropdown">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option> 
-            </select>  
-        </div> 
-        <a type="button" class="button" onclick="togglePopup()" style="margin-top: 10px; color: blue; text-decoration: underline; display: flex; font-size: 20px;"> Size Chart</a>  
-        <br> 
-        <div class="quantity" style="display: flex;  height:30px;">
-            <label style="margin-right:5px; font-size: 20px;">Quantity: </label>
-            <input type="number" id="quantityInput" value="1" min="1" style="width:100px;">
-        </div>  
+  <div class="product-div-right">
+    <span class="product-title" style="font-size: 30px;">Safety Vest</span>
+    <div class="product-description">Crafted with premium materials and offers unparalleled safety and comfort.</div>
+    <span class="product-price" style="display: flex;" id="productPrice">$12.99</span>
+    <div class="btn-groups">
+        <div class="size">
+            <label style="margin-right: 5px; font-size: 20px;">Size: </label>
+            <select id="sizeDropdown" onchange="updatePriceAndTotal()">
+                {% for vest in vests %}
+                    <option value="{{ vest.size }}" data-price="{{ vest.price }}">{{ vest.size }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <a type="button" class="button" onclick="togglePopup()" style="margin-top: 10px; color: blue; text-decoration: underline; display: flex; font-size: 20px;">Size Chart</a>
+        <br>
+        <div class="quantity" style="display: flex; height: 30px;">
+            <label style="margin-right: 5px; font-size: 20px;">Quantity: </label>
+            <input type="number" id="quantityInput" value="1" min="1" style="width: 100px;" oninput="updatePriceAndTotal()">
+        </div>
+        <br>
+        <div>
+            <label>Total: </label>
+            <span id="totalPrice">$12.99</span>
+        </div>
         <br>
         <button type="button" class="add-cart-btn" onclick="addToCart()" style="margin-top: 10px; width: 150px;">
-          <i class="fas-fa-shopping-cart"></i> Add to Cart
+            <i class="fas-fa-shopping-cart"></i> Add to Cart
         </button>
+    </div>
+</div>
+
+<script>
+    function updatePriceAndTotal() {
+        var sizeDropdown = document.getElementById("sizeDropdown");
+        var selectedOption = sizeDropdown.options[sizeDropdown.selectedIndex];
+        var price = parseFloat(selectedOption.getAttribute("data-price"));
+        
+        var quantityInput = document.getElementById("quantityInput");
+        var quantity = parseInt(quantityInput.value);
+        
+        var totalPrice = price * quantity;
+        document.getElementById("productPrice").innerText = "$" + price.toFixed(2);
+        document.getElementById("totalPrice").innerText = "$" + totalPrice.toFixed(2);
+    }
+</script>
+
+
+
          
         <div class="popup" id="popup-1">
           <div class="overlay"></div>
