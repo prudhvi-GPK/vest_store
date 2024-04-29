@@ -23,13 +23,16 @@
   <section id="home" class="bg-cover hero-section" >
     <div class="overlay"></div>
     <div class="container text-white ">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="main-title" data-v-946d0c05 data-cmp-info="9" style="font-size:35px; font-weight:bold;"> Stay Safe with 25 MPH Vest</h2>
-                <p class="custom-paragraph" data-aos="fade-up" style="font-size:22px;"  >
-                  Enhance your visibility and stay safe during outdoor activities with our lightweight vest. Perfect for cyclists, joggers, and walkers alike.</p>
-                <br>  
-                <a href="#services" data-aos="fade-up" class="btn btn-main" id="getStartedButton">View Product</a>
+      <div class="row">
+        <div class="col-12">
+          <div class="content-block" >
+            <h2 class="main-title" data-v-946d0c05 data-cmp-info="9" style="font-size:35px; font-weight:bold; color:#fff"> Stay Safe with 25 MPH Vest</h2>
+            <p class="custom-paragraph" data-aos="fade-up" style="font-size:22px; text-align:justify;"  >
+              Enhance your visibility and stay safe during outdoor activities with our lightweight vest.Perfect for cyclists, joggers, and walkers alike. </p>
+           
+          </div> 
+          <br>
+                <a href="#services" data-aos="fade-up" class="btn btn-main" id="getStartedButton" style="min-width:200px">View Product</a>
 
             </div>
         </div>
@@ -61,8 +64,8 @@
       
   <div class="product-div-right">
     <span class="product-title" style="font-size: 30px;">Safety Vest</span>
-    <div class="product-description">Crafted with premium materials and offers unparalleled safety and comfort.</div>
-    <span class="product-price" style="display: flex;" id="productPrice">$12.99</span>
+    <div class="product-description">Wear a 25MPH vest to walk, jog or run safely with the lightweight, silkscreen printed on both front and back </div>
+    <span class="product-price" style="display: flex; font-size: 25px;" id="productPrice">$12.99</span>
     <div class="btn-groups">
         <div class="size">
             <label style="margin-right: 5px; font-size: 20px;">Size: </label>
@@ -80,10 +83,9 @@
         </div>
         <br>
         <div>
-            <label>Total: </label>
-            <span id="totalPrice">$12.99</span>
-        </div>
-        <br>
+          <label>Total: </label>
+          <span id="totalPrice">$12.99</span>
+      </div>
         <button type="button" class="add-cart-btn" onclick="addToCart()" style="margin-top: 10px; width: 150px;">
             <i class="fas-fa-shopping-cart"></i> Add to Cart
         </button>
@@ -222,9 +224,9 @@
     }
  // Function to update background image
     const backgroundImages = [
-        "{% static 'images/background1.png' %}",
-        "{% static 'images/background2.png' %}",
-        "{% static 'images/background3.png' %}"
+        "{% static 'images/s1.jpeg' %}",
+        "{% static 'images/s2.jpeg' %}",
+        "{% static 'images/s3.jpeg' %}"
         
     ];
     function updateBackgroundImage() {
@@ -281,9 +283,9 @@
     
 
 
-<footer style="padding: 0.3em; text-align: center;">
-  <a href="{% url 'admin:index' %}" style="color: white;">Admin Login</a>
-  <p style="margin-bottom: auto;">&copy; 2024 25 MPH Vest. All rights reserved.</p>
+<footer style="padding: 0.2em; text-align: center;">
+  <p style="margin-bottom: auto;"><b>Contact Us:</b> <a href="mailto:25mphvest@gmail.com">25mphvest@gmail.com</a> <br>
+    <b>Address:</b> 62 Calef Highway #240, Lee, NH, USA</p>
 </footer>
 
 
