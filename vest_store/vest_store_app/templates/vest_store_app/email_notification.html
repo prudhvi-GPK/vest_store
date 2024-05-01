@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Notification</title>
+</head>
+<body>
+    <h1>Email Notification</h1>
+
+    <script>
+        // When the page loads, send an AJAX request to trigger the email sending process
+        document.addEventListener('DOMContentLoaded', function() {
+            // Send AJAX request to the backend
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/send_email/');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Email sent successfully, display message
+                        alert('Email sent successfully');
+                    } else {
+                        // Email sending failed, display error message
+                        alert('Failed to send email');
+                    }
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
