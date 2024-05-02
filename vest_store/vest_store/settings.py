@@ -25,6 +25,12 @@ SECRET_KEY = 'django-insecure-pax(auh=1f0pecv2mtp-w)a*@wn$nf$y(3#@0^tk%3)gvu4#1y
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sriramteja1106@gmail.com'
+EMAIL_HOST_PASSWORD = 'meqa rlzx jvnd ywbk'
 
 ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
 
@@ -70,6 +76,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'vest_store.wsgi.application'
+
+
 
 
 # Database
