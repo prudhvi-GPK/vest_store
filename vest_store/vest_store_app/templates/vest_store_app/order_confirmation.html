@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>Order Confirmation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,8 +13,36 @@
             font-family: Arial, sans-serif;
         }
 
+        header {
+            background-color: #4C4E52;
+            color: white;
+            padding: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            }
+
+            nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            }
+
+            nav ul li {
+            display: inline;
+            margin: 0 10px;
+            }
+
+            nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
         .container {
-            margin-top: 50px;
+            margin-top: 110px;
             text-align: center;
         }
 
@@ -42,9 +70,44 @@
             font-style: italic;
             color: #6c757d;
         }
+
+        
+        .cart-symbol {
+        position: fixed;
+        top: 20px;
+        right: 25px;
+        font-size: 25px;
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 1005;
+       }
+
+       footer {
+        background-color: #4C4E52;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        border-radius: 10px;
+        z-index: 99;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about_page' %}">About Us</a></li>
+            <div id ="cartSymbol" class="cart-symbol"><a href="{% url 'cart_page' %}"> 🛒</a></div>
+            <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
+          </ul>
+        </nav>
+    </header>
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -63,5 +126,11 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer style="padding: 1em; text-align: center;">
+        <p style="margin-bottom: auto;"><b>Contact Us:</b> <a href="mailto:25mphvest@gmail.com">25mphvest@gmail.com</a> <br>
+          
+    </footer>
+
 </body>
 </html>
