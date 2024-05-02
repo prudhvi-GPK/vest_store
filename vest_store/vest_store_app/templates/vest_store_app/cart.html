@@ -45,14 +45,14 @@
         }
 
         .container {
-            padding-top: 120px;
-            margin-bottom: 50px; /* Adjusted margin for buttons */
+            padding-top: 80px;
+            margin-bottom: 50px; 
         }
 
         .card {
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: -10px;
         }
 
         .card-header {
@@ -272,10 +272,11 @@
                 <ul id="items-list"></ul>
                  
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-2"><strong>Subtotal:</strong></div>
-                    <div class="col-md-4">$<span id="final-price">0</span></div>
+                    <div class="col"></div>
+                    <div class="col text-center"><strong>Subtotal:</strong> $<span id="final-price">0</span></div>
                 </div>
+                
+                
 
                 <div class="buttons text-center">
                     <a href="{% url 'checkout' %}?total={{ totalPrice }}" class="btn btn-primary checkout-btn " style="background-color: #4C4E52; color: white;">Proceed to Checkout</a>
@@ -384,9 +385,10 @@ function updateCartSymbol() {
 
 
 
-<footer style="padding: 0.2em; text-align: center;">
+<footer style="padding: 1em; text-align: center;">
     <p style="margin-bottom: auto;"><b>Contact Us:</b> <a href="mailto:25mphvest@gmail.com">25mphvest@gmail.com</a> <br>
-      <b>Address:</b> 62 Calef Highway #240, Lee, NH, USA</p>
-  </footer>
+     
+</footer>
+
 </body>
 </html>
