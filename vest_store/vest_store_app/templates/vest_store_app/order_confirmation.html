@@ -114,14 +114,30 @@
                 Congratulations!
             </div>
             <div class="card-body">
+                
                 <p>Your order has been successfully processed. Thank you!</p>
             </div>
         </div>
+        
 
         <div class="quote">
             "A vest is not just an extra layer of clothing; it's a statement of style and sophistication." 😊
         </div>
     </div>
+    
+    <section>
+        <h1>Order Confirmation</h1>
+        {% if purchased_items %}
+            <ul>
+                {% for item in purchased_items %}
+                    <li>{{ item.vest.size }} - Quantity: {{ item.quantity }}</li>
+                {% endfor %}
+            </ul>
+            <p>Total Price: {{ total_price }}</p>
+        {% else %}
+            <p>No items in the order.</p>
+        {% endif %}
+    </section>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
