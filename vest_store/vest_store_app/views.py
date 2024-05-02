@@ -88,8 +88,27 @@ def checkout(request):
 
 
 def order_confirmation(request):
-    # Your order confirmation logic goes here
-    return render(request, 'vest_store_app/order_confirmation.html')
+    # Retrieve purchased items from the session
+    cart = request.session.get('cart', {})
+    purchased_items = []
+
+    # Retrieve details of purchased vests based on items in the cart
+    total_price = 0
+    for size, quantity in cart.items():
+        vest = Vest.objects.get(size=size)
+        total_price += vest.price * quantity
+        purchased_items.append({'vest': vest, 'quantity': quantity})
+
+        vest = Vest.objects.get(size=size)
+        vest.stock -= quantity
+        vest.save()
+
+
+    # Clear the cart after displaying items in order confirmation
+    request.session['cart'] = {}
+
+    return render(request, 'vest_store_app/order_confirmation.html', {'purchased_items': purchased_items, 'total_price': total_price})
+
 def store_user_details(request):
     if request.method == 'POST':
         name = request.POST.get('name')
