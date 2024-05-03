@@ -17,26 +17,40 @@ def send_email(request):
 
     send_mail(subject, message, email_from, recipient_list)
     
-    return render(request, 'vest_store_app/email_notification.html')
+    return render(request, 'vest_store_app/email_notification.html') 
 
 
 
 def home(request):
     # Retrieve all vest objects from the database
+    count = 0
     vests = Vest.objects.all()
-    for vest in vests:
-        if vest.stock < 5:
-            # Compose your email message
-            subject = 'Low Stock Notification'
-            message = f'The stock for {vest.size} is running low. we are left with {vest.stock}Please replenish.'
-            recipient_list = ['iylamsriramteja@gmail.com']
-            email_from = settings.EMAIL_HOST_USER
+    email_sent = False  # Flag to track if the email has been sent
+    dict = {}
 
-            # Send the email
-            send_mail(subject, message, ' email_from', recipient_list)
+    for vest in vests:
+        count += 1
+        if vest.stock < 5:
             
-            # Email sent, break the loop
-            break
+            # Update the dictionary with the size and stock of the vest
+            dict[vest.size] = vest.stock
+            
+            # Check if 3 vests with low stock have been found
+            if count == 3 and not email_sent:
+                print(dict)
+                # Compose your email message
+                subject = 'Low Stock Notification'
+                message = 'The following vests are running low on stock:\n'
+                for size, stock in dict.items():
+                    message += f'Size: {size}, Stock: {stock}\n'
+                recipient_list = ['iylamsriramteja@gmail.com']
+                email_from = settings.EMAIL_HOST_USER
+
+                # Send the email
+                send_mail(subject, message, email_from, recipient_list)
+                email_sent = True  # Set the flag to True to avoid sending multiple emails
+                break  # Exit the loop after sending the email
+            else: continue
 
     # Render your home template
     return render(request, 'vest_store_app/home.html', {'vests': vests})
@@ -46,8 +60,8 @@ def about_page(request):
 
 def cart_page(request):
     cart = request.session.get('cart', {})
+    
     return render(request, 'vest_store_app/cart.html', {'cart': cart})
-
 
 
 
