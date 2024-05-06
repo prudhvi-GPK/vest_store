@@ -13,5 +13,6 @@ urlpatterns = [
     path('order_confirmation/', views.order_confirmation, name='order_confirmation'),
     path('email_notification/', views.email_notification, name='email_notification'),
     path('send_email/', views.send_email, name='send_email'),
+    path('get_cart_item_count/', views.get_cart_item_count, name='get_cart_item_count'),
 ]
 
