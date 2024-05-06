@@ -26,6 +26,7 @@ class ViewsTests(TestCase):
 
 
     def test_add_to_cart_view(self):
+        
         # Using Django's Client to handle sessions
         client = Client()
 
