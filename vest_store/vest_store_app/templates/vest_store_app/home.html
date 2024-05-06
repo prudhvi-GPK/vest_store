@@ -16,6 +16,7 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about_page' %}">About Us</a></li>
         <li><a href="https://www.paypal.com/ncp/payment/MGJY8HJHGGT7C" id="donateLink" target="_blank">Donate</a></li>
+        
       </ul>
     </nav>
 </header>
@@ -84,8 +85,9 @@
         <br>
         <button type="button" class="add-cart-btn" onclick="addToCart()" style="margin-top: 10px; width: 150px;">
             <i class="fas-fa-shopping-cart"></i> Add to Cart
-        </button>
+        </button> 
     </div>
+   
 </div>
 
 <script>
@@ -193,12 +195,38 @@
 
 
         let cartItems = 0;
-        window.onload = function() {
-            document.getElementById('cartSymbol').addEventListener('click',function(){
+
+        window.onload = function () {
+            document.getElementById('cartSymbol').addEventListener('click', function () {
                 window.location.href = "{% url 'cart_page' %}";
             });
-            updateCartSymbol();
+            fetchCartItemCount();
         };
+
+        function fetchCartItemCount() {
+            fetch("{% url 'get_cart_item_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    cartItems = data.count;
+                    updateCartSymbol();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function updateCartSymbol() {
+            const cartSymbol = document.getElementById('cartSymbol');
+            const cartBackground = document.getElementById('cartBackground');
+
+            if (cartItems > 0) {
+                cartBackground.innerText = '🛒' + cartItems;
+                cartBackground.style.backgroundColor = 'green'; // Change background color
+            } else {
+                cartBackground.innerText = '🛒';
+                cartBackground.style.backgroundColor = 'transparent'; // Reset background color
+            }
+        }
         function addToCart() {
           const sizeDropdown = document.getElementById("sizeDropdown");
           const selectedSize = sizeDropdown.options[sizeDropdown.selectedIndex].value;

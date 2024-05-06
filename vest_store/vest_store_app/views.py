@@ -40,16 +40,19 @@ def home(request):
                 print(dict)
                 # Compose your email message
                 subject = 'Low Stock Notification'
-                message = 'The following vests are running low on stock:\n'
+                message = 'Please stock your vests, The following vests are running out of stock:\n'
+                message2 = 'Reply to this email, for any further assistance'
+                msg = message+message2
                 for size, stock in dict.items():
                     message += f'Size: {size}, Stock: {stock}\n'
                 recipient_list = ['iylamsriramteja@gmail.com']
                 email_from = settings.EMAIL_HOST_USER
 
                 # Send the email
-                send_mail(subject, message, email_from, recipient_list)
+                send_mail(subject, msg, email_from,  recipient_list)
                 email_sent = True  # Set the flag to True to avoid sending multiple emails
                 break  # Exit the loop after sending the email
+
             else: continue
 
     # Render your home template
@@ -137,3 +140,7 @@ def store_user_details(request):
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
+def get_cart_item_count(request):
+    cart = request.session.get('cart', {})
+    total_items = sum(cart.values())
+    return JsonResponse({'count': total_items})
